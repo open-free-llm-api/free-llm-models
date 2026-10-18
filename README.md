@@ -1,65 +1,89 @@
 # free-llm-models
 
-A curated, machine-readable list of **500+ free LLM APIs and models** from 30+ providers — queryable right from your terminal.
+[![npm version](https://img.shields.io/npm/v/free-llm-models.svg)](https://www.npmjs.com/package/free-llm-models)
+[![npm downloads](https://img.shields.io/npm/dm/free-llm-models.svg)](https://www.npmjs.com/package/free-llm-models)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/open-free-llm-api/free-llm-models.svg)](https://github.com/open-free-llm-api/free-llm-models/stargazers)
 
-Data is synced from [FreeLLM](https://freellm.net), the free LLM API directory. Browse the full catalog with playground at [freellm.net](https://freellm.net).
+A curated, machine-readable directory of **537+ free LLM APIs and models** from 30+ providers. Query it from your terminal or import it into your Node.js projects.
 
-## Install
+Data is synced daily from [FreeLLM](https://freellm.net) — the free LLM API directory with live playground. Browse the full interactive catalog at [freellm.net](https://freellm.net).
+
+> **Python user?** There's a PyPI twin: [`free-llm-models` on PyPI](https://pypi.org/project/free-llm-models/) · [GitHub](https://github.com/open-free-llm-api/free-llm-models-python)
+
+## Installation
 
 ```bash
 npm install -g free-llm-models
 ```
 
+Or use without installing:
+
+```bash
+npx free-llm-models search claude
+```
+
 ## CLI Usage
 
 ```bash
-# List free models
+# List free models (default 20, use --limit for more)
 free-llm-models list --limit 10
 
 # Filter by provider
 free-llm-models list --provider opencode
 
-# Search
+# Search by keyword
 free-llm-models search claude
 
-# Model details
+# Show model details
 free-llm-models info kimi-k2-7-code
 
-# All providers
+# List all providers with model counts
 free-llm-models providers
 
-# Compare two models
+# Compare two models side by side
 free-llm-models compare kimi-k2-7-code claude-fable-5
 
-# Random pick
+# Get a random recommendation
 free-llm-models random
 
-# JSON output for scripting
+# Machine-readable JSON output (great for scripts)
 free-llm-models search gpt --json
 ```
 
 ## Programmatic Usage
 
-```js
+```javascript
 const models = require('free-llm-models');
 
-models.search('claude');      // [...matches]
-models.get('kimi-k2-7-code'); // { id, name, provider, ... }
-models.providers();           // [{ name, count }]
-models.random();              // one random model
+// Search models
+const results = models.search('claude');
+
+// Get a specific model
+const model = models.get('kimi-k2-7-code');
+console.log(model.provider); // 'opencode'
+
+// List providers
+const providers = models.providers();
+
+// Get dataset metadata
+const meta = models.meta(); // { updated, source, count }
 ```
 
 ## Data
 
-- **537 models** across 30+ providers (updated 2026-10-18)
-- Fields: `id`, `name`, `provider`, `supportsTools`, `supportsJson`, `released`
-- Full interactive directory: [https://freellm.net](https://freellm.net)
+| Field | Description |
+|-------|-------------|
+| `id` | Unique model identifier |
+| `name` | Human-readable model name |
+| `provider` | Provider name (e.g. `opencode`, `google-gemini`) |
+| `supportsTools` | Whether the model supports function calling |
+| `supportsJson` | Whether the model supports JSON mode |
+| `released` | Release date (ISO 8601) |
 
-## License
-
-MIT
-
-> **Python user?** There's a PyPI twin: [`free-llm-models` on PyPI](https://pypi.org/project/free-llm-models/) · [GitHub](https://github.com/open-free-llm-api/free-llm-models-python)
+- **537 models** across 30+ providers
+- Updated: 2026-10-18
+- Full interactive directory with playground: [https://freellm.net](https://freellm.net)
 
 ## Relationship with awesome-freellm-apis
 
@@ -71,4 +95,16 @@ This package is the machine-readable companion to [awesome-freellm-apis](https:/
 | Use case | Browse & compare in browser | Query from terminal / code |
 | Data source | Same freellm.net dataset | Same freellm.net dataset |
 
-Both are maintained by the [open-free-llm-api](https://github.com/open-free-llm-api) org and synced from [freellm.net](https://freellm.net).
+Both are maintained by the [open-free-llm-api](https://github.com/open-free-llm-api) organization and synced from [freellm.net](https://freellm.net).
+
+## Contributing
+
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for release history.
+
+## License
+
+MIT © [MyToolster](https://freellm.net)
