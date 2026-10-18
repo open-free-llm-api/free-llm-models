@@ -58,3 +58,5 @@ models.random();              // one random model
 ## License
 
 MIT
+
+> **Python user?** There's a PyPI twin: [`free-llm-models` on PyPI](https://pypi.org/project/free-llm-models/) · [GitHub](https://github.com/open-free-llm-api/free-llm-models-python)
