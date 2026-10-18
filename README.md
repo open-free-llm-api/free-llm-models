@@ -1,3 +1,5 @@
+![FreeLLM.net](og-image.jpg)
+
 # free-llm-models
 
 [![npm version](https://img.shields.io/npm/v/free-llm-models.svg)](https://www.npmjs.com/package/free-llm-models)
